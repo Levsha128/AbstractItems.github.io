@@ -1,0 +1,1 @@
+# `GeneralItems` — abstract application
