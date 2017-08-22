@@ -1,0 +1,24 @@
+<div ng-if="hasSelectedItem()">
+    <header class="panel__header">Comments #{{getSelectedItemIndex()+1}}</header>
+    <ul ng-if="getComments().length" class="comments-list">
+        <li ng-repeat="comment in getComments()" class="comments-list__item">
+            <img class="comments-list__avatar" alt="{{comment.author.name}} avatar" src="{{comment.author.avatar}}">
+            <pre class="comments-list__text">{{comment.text}}</pre>
+        </li>
+    </ul>
+    <div ng-if="!getComments().length" class="panel-message">
+        NO COMMENTS. BE FIRST WHO COMMENTED THIS ITEM
+    </div>
+    <div class="add-comment">
+        <img class="add-comment__avatar" alt="{{newComment.author.name}} avatar"
+             src="{{newComment.author.avatar}}"></img>
+        <textarea ng-model="newComment.text" ng-keypress="commentKeypressHandler($event)" class="add-comment__textarea"
+                  placeholder="Press ctrl+enter to add comment"></textarea>
+    </div>
+</div>
+<div ng-if="!hasSelectedItem()">
+    <header class="panel__header">Comments</header>
+    <div class="panel-message">
+        PLEASE SELECT ITEM TO SHOW COMMENTS
+    </div>
+</div>

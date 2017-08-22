@@ -1,23 +1,21 @@
-<section class="panel">
-    <header class="panel__header">Items</header>
-    <div class="create-item">
-        <button ng-click="addItem()" class="create-item__button">Add new</button>
-        <div class="create-item__input-wrapper">
-            <input ng-model="newItemText" ng-keypress="keypressHandler($event)" class="create-item__input"
-                   placeholder="Type name here...">
-        </div>
+<header class="panel__header">Items</header>
+<div class="create-item">
+    <button ng-click="addItem()" class="create-item__button">Add new</button>
+    <div class="create-item__input-wrapper">
+        <input ng-model="newItemText" ng-keypress="keypressHandler($event)" class="create-item__input"
+               placeholder="Type name here...">
     </div>
-    <ul ng-if="items.length" class="items-list">
-        <li ng-repeat=" item in items"
-            ng-click="selectItem(item)"
-            ng-class="{'items-list__item--active':isSelectedItem(item)}"
-            class="items-list__item">
-            <div class="items-list__header">{{item.title}}</div>
-            <div class="items-list__counter">{{item.comments.length}}</div>
-            <button ng-click="deleteItem(item)" class="items-list__button">Delete</button>
-        </li>
-    </ul>
-    <div ng-if="!items.length" class="panel-message">
-        NO ITEMS. CREATE NEW ONE BY PRESSING "ADD NEW"
-    </div>
-</section>
+</div>
+<ul ng-if="items.length" class="items-list">
+    <li ng-repeat="item in items"
+        ng-click="selectItem(item)"
+        ng-class="{'items-list__item--active':isSelectedItem(item)}"
+        class="items-list__item">
+        <div class="items-list__header">{{item.title}}</div>
+        <div class="items-list__counter">{{item.comments.length}}</div>
+        <button ng-click="deleteItem(item)" class="items-list__button">Delete</button>
+    </li>
+</ul>
+<div ng-if="!items.length" class="panel-message">
+    NO ITEMS. CREATE NEW ONE BY PRESSING "ADD NEW"
+</div>

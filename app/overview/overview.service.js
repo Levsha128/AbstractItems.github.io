@@ -30,7 +30,19 @@ angular
             }
         ];
         var selectedItem = null;
+        var user = {
+            name: 'User 1',
+            avatar: 'user1.jpg'
+        };
+        var loadItems = function () {
+        };
+        var saveItems = function () {
+
+        };
         return {
+            getUser: function () {
+                return user;
+            },
             getItems: function () {
                 return items;
             },
@@ -45,6 +57,7 @@ angular
                     return false;
                 }
                 items.push(item);
+                saveItems();
                 return true;
             },
             deleteItem: function (item) {
@@ -56,10 +69,14 @@ angular
                     return false;
                 }
                 items.splice(index, 1);
+                saveItems();
                 return true;
             },
             isSelectedItem: function (item) {
                 return item === selectedItem;
+            },
+            hasSelectedItem: function () {
+                return selectedItem !== null;
             },
             selectItem: function (item) {
                 if (this.isSelectedItem(item)) { //toggle selection
@@ -70,6 +87,16 @@ angular
             },
             resetSelection: function () {
                 selectedItem = null;
+            },
+            getSelectedItemComments: function () {
+                return selectedItem ? selectedItem.comments : [];
+            },
+            getSelectedItemIndex: function () {
+                return items.indexOf(selectedItem);
+            },
+            addCommentToSelectedItem: function (comment) {
+                var comments = this.getSelectedItemComments();
+                comments.push(Object.assign({}, comment));
             }
         };
     });
