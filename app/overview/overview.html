@@ -1,24 +1,20 @@
 <section class="panel">
     <header class="panel__header">Items</header>
     <div class="create-item">
-        <button class="create-item__button">Add new</button>
+        <button ng-click="addItem()" class="create-item__button">Add new</button>
         <div class="create-item__input-wrapper">
-            <input class="create-item__input" placeholder="Type name here...">
+            <input ng-model="newItem" class="create-item__input" placeholder="Type name here...">
         </div>
     </div>
     <ul class="items-list">
-        <li class="items-list__item">
-            <div class="items-list__header">Test header</div>
-            <div class="items-list__counter">132</div>
-            <button class="items-list__button">Delete</button>
-        </li>
-        <li class="items-list__item items-list__item--active">
-            <div class="items-list__header">Test header</div>
-            <div class="items-list__counter">132</div>
-            <button class="items-list__button">Delete</button>
+        <li ng-repeat="(index, item) in items" class="items-list__item items-list__item--active">
+            <div class="items-list__header">{{item.title}}</div>
+            <div class="items-list__counter">{{item.comments.length}}</div>
+            <button ng-click="deleteItem(index)" class="items-list__button">Delete</button>
         </li>
     </ul>
 </section>
+
 <section class="panel">
     <header class="panel__header">Comments #2</header>
     <ul class="comments-list">
