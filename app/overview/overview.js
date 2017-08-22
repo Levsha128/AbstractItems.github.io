@@ -10,78 +10,7 @@ angular.module('myApp.overview', ['ngRoute'])
     }])
 
     .controller('OverviewCtrl', function ($scope) {
-        $scope.newItem = '';
-        $scope.selectedItem = null;
-        $scope.items = [
-            {
-                title: '1111',
-                comments: [{
-                    author: {
-                        name: 'User 1',
-                        avatar: 'user1.jpg'
-                    },
-                    text: 'test comment'
-                }, {
-                    author: {
-                        name: 'User 2',
-                        avatar: 'user2.jpg'
-                    },
-                    text: 'test comment2'
-                }]
-            },
-            {
-                title: '222',
-                comments: [{
-                    author: {
-                        name: 'User 1',
-                        avatar: 'user1.jpg'
-                    },
-                    text: 'test comment3'
-                }]
-            }
-        ];
-        $scope.hasItem = function (title) {
-            return $scope.items.some(function (item) {
-                return item.title === title
-            });
-        };
-        $scope.addItem = function () {
-            if ($scope.newItem === '' || $scope.hasItem($scope.newItem)) {
-                return;
-            }
-            var item = {
-                title: $scope.newItem,
-                comments: []
-            };
-            $scope.items.push(item);
-            $scope.resetInput();
-            $scope.selectItem(item);
-        };
-        $scope.selectItem = function (item) {
-            if ($scope.selectedItem === item) {
-                item = null;
-            }
-            $scope.selectedItem = item;
-            $scope.comments = $scope.selectedItem ? $scope.selectedItem.comments : [];
-        };
-        $scope.resetInput = function () {
-            $scope.newItem = '';
-        };
-        $scope.deleteItem = function (index) {
-            if ($scope.items[index] === $scope.selectedItem) {
-                $scope.resetSelection();
-            }
-            $scope.items.splice(index, 1);
-        };
-        $scope.resetSelection = function () {
-            $scope.selectedItem = null;
-            $scope.comments = $scope.selectedItem ? $scope.selectedItem.comments : [];
-        };
-        $scope.keypressHandler = function (event) {
-            if (event.which === 13) { // on enter
-                $scope.addItem();
-            }
-        };
+
 
         $scope.comments = [];
         $scope.user = {
