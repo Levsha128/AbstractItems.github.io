@@ -66,6 +66,14 @@ body {
     font-color: #ffffff; /* todo check color */
 }
 
+.panel .panel-message{
+    text-align: center;
+    font-weight: 300;
+    font-size: 36px;
+    color: #8e8e8e;
+    margin: 20px;
+}
+
 /* Left panel */
 
 .create-item {
@@ -126,8 +134,8 @@ body {
     border-left: 5px solid white;
 }
 
-.items-list .items-list__item.items-list__item--active:before {
-    border-color: #ff0000;
+.items-list .items-list__item.items-list__item--active {
+    border-left-color: #ff0000;
 }
 
 .items-list .items-list__counter {

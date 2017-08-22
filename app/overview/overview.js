@@ -11,6 +11,7 @@ angular.module('myApp.overview', ['ngRoute'])
 
     .controller('OverviewCtrl', function ($scope) {
         $scope.newItem = '';
+        $scope.selectedItem = null;
         $scope.items = [
             {
                 title: '1111',
@@ -30,20 +31,31 @@ angular.module('myApp.overview', ['ngRoute'])
             if ($scope.newItem === '' || $scope.hasItem($scope.newItem)) {
                 return;
             }
-            $scope.items.push({
+            var item = {
                 title: $scope.newItem,
                 comments: []
-            });
+            };
+            $scope.items.push(item);
             $scope.resetInput();
+            $scope.selectItem(item);
+        };
+        $scope.selectItem = function (item) {
+            $scope.selectedItem = item;
         };
         $scope.resetInput = function () {
             $scope.newItem = '';
         };
         $scope.deleteItem = function (index) {
+            if ($scope.items[index] === $scope.selectedItem) {
+                $scope.resetSelection();
+            }
             $scope.items.splice(index, 1);
         };
+        $scope.resetSelection = function () {
+            $scope.selectedItem = null;
+        }
         $scope.keypressHandler = function (event) {
-            if(event.which === 13){ // on enter
+            if (event.which === 13) { // on enter
                 $scope.addItem();
             }
         }
