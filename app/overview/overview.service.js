@@ -8,7 +8,53 @@ angular
             avatar: 'user1.jpg'
         };
 
-        loadItems();
+        if(isFirstStart())
+        {
+            setNotFirstStart();
+            setDefaultItems();
+            saveItems();
+        }else {
+            loadItems();
+        }
+
+        function isFirstStart() {
+            return !window.localStorage.getItem('not-first-start');
+        }
+
+        function setNotFirstStart() {
+            window.localStorage.setItem('not-first-start', true);
+        }
+
+        function setDefaultItems() {
+            items = [
+                {
+                    title: 'Item 1',
+                    comments: [{
+                        author: {
+                            name: 'User 1',
+                            avatar: 'user1.jpg'
+                        },
+                        text: 'test comment'
+                    }, {
+                        author: {
+                            name: 'User 2',
+                            avatar: 'user2.jpg'
+                        },
+                        text: 'test comment2'
+                    }]
+                },
+                {
+                    title: 'Item 2',
+                    comments: [{
+                        author: {
+                            name: 'User 1',
+                            avatar: 'user1.jpg'
+                        },
+                        text: 'test comment3'
+                    }]
+                }
+            ];
+        }
 
         function loadItems() {
             try {
