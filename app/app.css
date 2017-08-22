@@ -1,25 +1,196 @@
-/* app css stylesheet */
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+html, body {
+    height: 100vh;
 }
 
-.menu:before {
-  content: "[";
+body {
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
 }
 
-.menu:after {
-  content: "]";
+.sidebar {
+    flex: 1 0 270px;
+    max-width: 270px; /* to prevent full with sidebar while content is loading*/
+    background: #2b2f3e;
+    overflow: hidden;
 }
 
-.menu > li {
-  display: inline;
+.sidebar .sidebar__header {
+    font-weight: 300;
+    font-size: 36px;
+    color: #565a69;
+    padding: 30px;
 }
 
-.menu > li + li:before {
-  content: "|";
-  padding-right: 0.3em;
+.sidebar .sidebar__menu ul {
+    list-style: none;
+    padding: 0px;
+}
+
+.sidebar .sidebar__menu-item.sidebar__menu-item--active a {
+    /* We can use SASS with gradient-mixin in order to not to write this by the hand  */
+    background: -moz-linear-gradient(90deg, #ff404b 0%, #ff2d5c 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff2d5c), color-stop(100%, #ff404b)); /* safari4+,chrome */
+    background: -webkit-linear-gradient(90deg, #ff404b 0%, #ff2d5c 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(90deg, #ff404b 0%, #ff2d5c 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(90deg, #ff404b 0%, #ff2d5c 100%); /* ie10+ */
+    background: linear-gradient(0deg, #ff404b 0%, #ff2d5c 100%); /* w3c */
+
+    padding: 17px 25px;
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+}
+
+.content {
+    background: #f9f9f9;
+    padding: 30px;
+    flex: 1 1 auto;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* overview */
+.panel {
+    background: #ffffff;
+    overflow: hidden;
+    box-shadow: 0px 0px 3px 3px #dddddd;
+    padding: 8px 25px;
+    margin: 10px;
+    flex: 1;
+}
+
+.panel .panel__header {
+    font-weight: 300;
+    font-size: 36px;
+    font-color: #ffffff; /* todo check color */
+}
+
+/* Left panel */
+
+.create-item {
+}
+
+.create-item .create-item__input-wrapper {
+    width: auto;
+    overflow: hidden;
+    padding-right: 25px;
+}
+
+.create-item .create-item__input {
+    border: 2px solid #e5e5e5;
+    border-radius: 3px;
+    padding: 8px 6px;
+    color: #000000;
+    font-weight: 600;
+    font-size: 14px;
+    width: 100%;
+}
+
+.create-item .create-item__input::-webkit-input-placeholder {
+    color: #b3b3b3; /* todo check colors and fonts */
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.create-item .create-item__button {
+    background: #27ccc0;
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 8px 35px;
+    float: right;
+    margin-left: 5px;
+}
+
+.items-list {
+    list-style-type: none;
+    padding: 0px;
+    margin-left: -25px;
+    margin-right: -25px;
+}
+
+.items-list .items-list__header {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+    display: inline;
+}
+
+.items-list .items-list__item {
+    overflow: hidden;
+    padding: 5px 25px;
+    border-bottom: 1px solid #f2f2f2;
+    border-left: 5px solid white;
+}
+
+.items-list .items-list__item.items-list__item--active:before {
+    border-color: #ff0000;
+}
+
+.items-list .items-list__counter {
+    background: #27ccc0;
+    font-weight: 700;
+    font-size: 13px;
+    color: #ffffff;
+    display: inline;
+    padding: 1px 8px;
+    border-radius: 10px;
+}
+
+.items-list__button {
+    font-weight: 300;
+    font-size: 16px;
+    background: #ffffff;
+    color: #ff305a;
+    border: 1px solid #ff98ac;
+    padding: 5px 25px;
+    border-radius: 3px;
+    display: inline-block;
+    float: right;
+}
+
+/* Right panel*/
+
+.comments-list {
+    padding: 0;
+    list-style-type: none;
+}
+
+.comments-list .comments-list__item {
+    overflow: hidden;
+}
+
+.comments-list .comments-list__avatar {
+    width: 50px;
+    height: 50px;
+    background: #000000;
+    float: left;
+}
+
+.comments-list .comments-list__text {
+    width: auto;
+    overflow: hidden;
+    padding: 0px 10px;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.add-comment {
+    overflow: hidden;
+}
+
+.add-comment .add-comment__avatar {
+    width: 50px;
+    height: 50px;
+    background: #000000;
+    float: left;
+}
+
+.add-comment .add-comment__textarea {
+    width: auto;
+    height: 100px;
+    padding: 0px 10px;
 }
