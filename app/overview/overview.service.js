@@ -1,44 +1,28 @@
 angular
     .module('myApp.overview')
     .factory('overviewService', function () {
-        var items = [
-            {
-                title: '1111',
-                comments: [{
-                    author: {
-                        name: 'User 1',
-                        avatar: 'user1.jpg'
-                    },
-                    text: 'test comment'
-                }, {
-                    author: {
-                        name: 'User 2',
-                        avatar: 'user2.jpg'
-                    },
-                    text: 'test comment2'
-                }]
-            },
-            {
-                title: '222',
-                comments: [{
-                    author: {
-                        name: 'User 1',
-                        avatar: 'user1.jpg'
-                    },
-                    text: 'test comment3'
-                }]
-            }
-        ];
+        var items = [];
         var selectedItem = null;
         var user = {
             name: 'User 1',
             avatar: 'user1.jpg'
         };
-        var loadItems = function () {
-        };
-        var saveItems = function () {
 
-        };
+        loadItems();
+
+        function loadItems() {
+            try {
+                var itemsString = window.localStorage.getItem('items');
+                items = itemsString ? JSON.parse(itemsString) : [];
+            } catch (e) {
+                items = [];
+            }
+        }
+
+        function saveItems() {
+            window.localStorage.setItem('items', angular.toJson(items));
+        }
+
         return {
             getUser: function () {
                 return user;
@@ -97,6 +81,7 @@ angular
             addCommentToSelectedItem: function (comment) {
                 var comments = this.getSelectedItemComments();
                 comments.push(Object.assign({}, comment));
+                saveItems();
             }
         };
     });
