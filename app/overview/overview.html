@@ -23,16 +23,28 @@
 </section>
 
 <section class="panel">
-    <header class="panel__header">Comments #2</header>
-    <ul class="comments-list">
-        <li class="comments-list__item">
-            <div class="comments-list__avatar"></div>
-            <div class="comments-list__text">111111111111111111111111111111111111111111111111111111111111111111</div>
-        </li>
-    </ul>
-    <div class="add-comment">
-        <div class="add-comment__avatar"></div>
-        <textarea class="add-comment__textarea"></textarea>
+    <div ng-if="selectedItem">
+        <header class="panel__header">Comments #{{getSelectedItemIndex()+1}}</header>
+        <ul ng-if="comments.length" class="comments-list">
+            <li ng-repeat="comment in comments" class="comments-list__item">
+                <img class="comments-list__avatar" alt="{{comment.author.name}} avatar" src="{{comment.author.avatar}}">
+                <pre class="comments-list__text">{{comment.text}}</pre>
+            </li>
+        </ul>
+        <div ng-if="!comments.length" class="panel-message">
+            NO COMMENTS
+        </div>
+        <div class="add-comment">
+            <div class="add-comment__avatar" alt="{{comment.author.name}} avatar" src="{{comment.author.avatar}}"></div>
+            <textarea ng-model="newComment" ng-keypress="commentKeypressHandler($event)" class="add-comment__textarea"
+                      placeholder="Press ctrl+enter to add comment"></textarea>
+        </div>
+    </div>
+    <div ng-if="!selectedItem">
+        <header class="panel__header">Comments</header>
+        <div class="panel-message">
+            PLEASE SELECT ITEM TO SHOW COMMENTS
+        </div>
     </div>
 </section>
 
