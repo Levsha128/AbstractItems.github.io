@@ -3,7 +3,7 @@
     <div class="create-item">
         <button ng-click="addItem()" class="create-item__button">Add new</button>
         <div class="create-item__input-wrapper">
-            <input ng-model="newItem" class="create-item__input" placeholder="Type name here...">
+            <input ng-model="newItem" ng-keypress="keypressHandler($event)" class="create-item__input" placeholder="Type name here...">
         </div>
     </div>
     <ul class="items-list">
