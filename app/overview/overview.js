@@ -41,6 +41,6 @@ angular.module('myApp.overview', ['ngRoute'])
             $scope.newItem = '';
         };
         $scope.deleteItem = function (index) {
-            console.log(index);
+            $scope.items.splice(index, 1);
         }
     });
