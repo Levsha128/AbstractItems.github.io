@@ -35,8 +35,8 @@
             NO COMMENTS
         </div>
         <div class="add-comment">
-            <div class="add-comment__avatar" alt="{{comment.author.name}} avatar" src="{{comment.author.avatar}}"></div>
-            <textarea ng-model="newComment" ng-keypress="commentKeypressHandler($event)" class="add-comment__textarea"
+            <img class="add-comment__avatar" alt="{{newComment.author.name}} avatar" src="{{newComment.author.avatar}}"></img>
+            <textarea ng-model="newComment.text" ng-keypress="commentKeypressHandler($event)" class="add-comment__textarea"
                       placeholder="Press ctrl+enter to add comment"></textarea>
         </div>
     </div>

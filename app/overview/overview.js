@@ -88,19 +88,20 @@ angular.module('myApp.overview', ['ngRoute'])
             name: 'User 1',
             avatar: 'user1.jpg'
         };
-        $scope.newComment = '';
+        $scope.newComment = {
+            text: '',
+            author: $scope.user
+        };
         $scope.getSelectedItemIndex = function () {
             return $scope.items.indexOf($scope.selectedItem);
         };
         $scope.commentKeypressHandler = function (event) {
             if (event.ctrlKey && (event.which === 13 || event.which === 10)) { // on ctrl+enter //todo check on mobile devices
-                $scope.addComment($scope.comments, $scope.user, $scope.newComment);
+                $scope.addComment();
             }
         };
-        $scope.addComment = function (comments, user, text) {
-            comments.push({
-                author: user,
-                text: text
-            });
+        $scope.addComment = function () {
+            $scope.comments.push(Object.assign({}, $scope.newComment));
+            $scope.newComment.text = '';
         }
     });
