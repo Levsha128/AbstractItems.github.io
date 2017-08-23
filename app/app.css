@@ -28,6 +28,11 @@ body {
     padding: 0px;
 }
 
+.sidebar .sidebar__menu-item {
+    font-weight: 400;
+    font-size: 18px;
+}
+
 .sidebar .sidebar__menu-item.sidebar__menu-item--active a {
     /* We can use SASS with gradient-mixin in order to not to write this by the hand  */
     background: -moz-linear-gradient(90deg, #ff404b 0%, #ff2d5c 100%); /* ff3.6+ */
@@ -37,7 +42,7 @@ body {
     background: -ms-linear-gradient(90deg, #ff404b 0%, #ff2d5c 100%); /* ie10+ */
     background: linear-gradient(0deg, #ff404b 0%, #ff2d5c 100%); /* w3c */
 
-    padding: 17px 25px;
+    padding: 16px 25px;
     color: #ffffff;
     text-decoration: none;
     display: block;
@@ -67,7 +72,7 @@ body {
 .panel .panel__header {
     font-weight: 300;
     font-size: 36px;
-    font-color: #ffffff; /* todo check color */
+    color: #565a69;
 }
 
 .panel .panel-message {
@@ -92,7 +97,7 @@ body {
 }
 
 .create-item .create-item__input {
-    border: 2px solid #e5e5e5;
+    border: 2px solid #cccccc;
     border-radius: 3px;
     padding: 8px 6px;
     color: #000000;
@@ -102,9 +107,9 @@ body {
 }
 
 .create-item .create-item__input::-webkit-input-placeholder {
-    color: #b3b3b3; /* todo check colors and fonts */
-    font-weight: 600;
-    font-size: 14px;
+    color: #b3b3b3;
+    font-weight: 400;
+    font-size: 16px;
 }
 
 .create-item .create-item__button {
@@ -112,7 +117,7 @@ body {
     border: none;
     border-radius: 3px;
     color: #ffffff;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 16px;
     padding: 8px 35px;
     float: right;
@@ -129,7 +134,7 @@ body {
 .items-list .items-list__header {
     font-weight: 600;
     font-size: 16px;
-    color: #000000;
+    color: #2b2f3e;
     display: inline-block;
     vertical-align: middle;
     padding: 5px 0px;
@@ -193,7 +198,6 @@ body {
 .comments-list .comments-list__avatar {
     width: 50px;
     height: 50px;
-    background: #000000;
     float: left;
 }
 
@@ -204,6 +208,8 @@ body {
     margin-top: 0px;
     font-weight: 400;
     font-size: 12px;
+    color: #666666;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .add-comment {
@@ -213,7 +219,6 @@ body {
 .add-comment .add-comment__avatar {
     width: 50px;
     height: 50px;
-    background: #000000;
     float: left;
 }
 

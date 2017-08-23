@@ -5,7 +5,7 @@ angular
         var selectedItem = null;
         var user = {
             name: 'User 1',
-            avatar: 'user1.jpg'
+            avatar: 'images/user1.png'
         };
 
         if(isFirstStart())
@@ -32,13 +32,13 @@ angular
                     comments: [{
                         author: {
                             name: 'User 1',
-                            avatar: 'user1.jpg'
+                            avatar: 'images/user1.png'
                         },
                         text: 'test comment'
                     }, {
                         author: {
                             name: 'User 2',
-                            avatar: 'user2.jpg'
+                            avatar: 'images/user2.png'
                         },
                         text: 'test comment2'
                     }]
@@ -48,7 +48,7 @@ angular
                     comments: [{
                         author: {
                             name: 'User 1',
-                            avatar: 'user1.jpg'
+                            avatar: 'images/user1.png'
                         },
                         text: 'test comment3'
                     }]
